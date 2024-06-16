@@ -21,8 +21,10 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 - Hono
 - Bun
 - TypeScript
-- JSON
-- Vercel
+- Docker
+- PostgreSQL
+- Prisma
+- Render
 - CloudFlare
 - VSCode
 
