@@ -1,7 +1,7 @@
-interface Author {
+export type Author = {
   id: string;
   name: string;
-}
+};
 
 export type Book = {
   id: string;
@@ -14,8 +14,7 @@ export type Book = {
   updatedAt: Date;
 };
 
-export const base_url = "https://bucherlister.ridoatmanto.com/public/";
-export const books: Book[] = [
+export const dataBooks: Book[] = [
   {
     id: "xpv1v",
     title:
@@ -27,7 +26,7 @@ export const books: Book[] = [
       { id: "author-cfha0", name: "Richard Koch" },
     ],
     publised: "Aug 13, 2013",
-    cover: base_url + "books-cover/80-20-sales-and-marketing.png",
+    cover: process.env.BASE_URL + "books-cover/80-20-sales-and-marketing.png",
     createdAt: new Date(),
     updatedAt: new Date(),
   },
@@ -39,7 +38,7 @@ export const books: Book[] = [
       'Are your sales funnels underperforming? Are you struggling to identify what\'s holding your business back?\n\nUncover the secrets to maximizing your sales funnel effectiveness with "Sales Funnel Sabotage."\n\nThis insightful book shines a spotlight on the pitfalls that could be costing your business BIG, and reveals how you can turn the tables on the common mistakes entrepreneurs often make.',
     authors: [{ id: "author-kfso9", name: "Miles Beckler" }],
     publised: "July 24, 2023",
-    cover: base_url + "books-cover/sales-funnel-sabotage.png",
+    cover: process.env.BASE_URL + "books-cover/sales-funnel-sabotage.png",
     createdAt: new Date(),
     updatedAt: new Date(),
   },
