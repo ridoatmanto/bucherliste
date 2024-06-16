@@ -35,7 +35,7 @@ app.post("/books", async (c) => {
     createdAt: new Date(),
     updatedAt: new Date(),
   };
-  const newBooksList = [...dataBooks, newBook];
+  const newBooksList = [...books, newBook];
   books = newBooksList;
 
   return c.json(newBook);
@@ -101,6 +101,11 @@ app.put("/books/:id", async (c) => {
     message: `Book with ID: ${id} has been updated!`,
     deletedBook: submittedBook,
   });
+});
+
+app.delete("/books", (c) => {
+  books = [];
+  return c.json(books);
 });
 
 function randomId() {
