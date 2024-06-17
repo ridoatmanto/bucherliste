@@ -16,6 +16,10 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 | `/books/:id` | `DELETE` | Delete book by id  |
 | `/books/:id` | `PUT`    | Update books by id |
 
+## ERD
+
+![ERD](./assets/bucherliste-db-erd.svg)
+
 ## Tech Stack
 
 - Hono
