@@ -18,7 +18,7 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 
 ## ERD
 
-![ERD](./assets/bucherliste-db-erd.svg)
+![ERD](./assets/bucherliste-erd.svg)
 
 ## Tech Stack
 
