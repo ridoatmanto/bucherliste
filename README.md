@@ -7,14 +7,29 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 - Production: `https://bucherliste.ridoatmanto.com`
 - Local: `http://localhost:3000`
 
-| Endpoint     | HTTP     | Description        |
-| ------------ | -------- | ------------------ |
-| `/books`     | `GET`    | Get all books      |
-| `/books/:id` | `GET`    | Get book by id     |
-| `/books`     | `POST`   | Add new book       |
-| `/books`     | `DELETE` | Delete all books   |
-| `/books/:id` | `DELETE` | Delete book by id  |
-| `/books/:id` | `PUT`    | Update books by id |
+### Books API
+
+| Endpoint           | HTTP     | Description       |
+| ------------------ | -------- | ----------------- |
+| `/books`           | `GET`    | Get all books     |
+| `/books?q=:search` | `GET`    | Search books      |
+| `/books/:id`       | `GET`    | Get book by id    |
+| `/books`           | `POST`   | Add new book      |
+| `/books`           | `DELETE` | Delete all books  |
+| `/books/:id`       | `DELETE` | Delete book by id |
+| `/books/:id`       | `PUT`    | Update book by id |
+
+### Authors API
+
+| Endpoint             | HTTP     | Description         |
+| -------------------- | -------- | ------------------- |
+| `/authors`           | `GET`    | Get all books       |
+| `/authors?q=:search` | `GET`    | Search authors      |
+| `/authors/:id`       | `GET`    | Get author by id    |
+| `/authors`           | `POST`   | Add new author      |
+| `/authors`           | `DELETE` | Delete all authors  |
+| `/authors/:id`       | `DELETE` | Delete author by id |
+| `/authors/:id`       | `PUT`    | Update author by id |
 
 ## ERD
 
