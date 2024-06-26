@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "./../src/libs/prisma";
 
 async function main() {
   const books = await prisma.book.createMany({
@@ -10,7 +8,7 @@ async function main() {
         title:
           "80/20 Sales and Marketing: The Definitive Guide to Working Less and Making More",
         description:
-          'Stop "Just Getting By"... Master the 80/20 Rule. Apply the Pareto Principle to Business And Make More Money Without More Work.\n\nWhen you know how to walk into any situation and see the 80/20\'s, the 80/20 Principle can solve almost ANY conversion problem.\n\nAny traffic problem.\n\nAny money problem.\nPerry Marshall has something original and extremely useful to say,because he has thought profoundly about the 80/20 Principle. He has come up with some original insights that are literally priceless. You really can change your business and your life.',
+          'Stop "Just Getting By"... Master the 80/20 Rule. Apply the Pareto Principle to Business And Make More Money Without More Work. When you know how to walk into any situation and see the 80/20\'s, the 80/20 Principle can solve almost ANY conversion problem. Any traffic problem. Any money problem. Perry Marshall has something original and extremely useful to say,because he has thought profoundly about the 80/20 Principle. He has come up with some original insights that are literally priceless. You really can change your business and your life.',
         published: "Aug 13, 2013",
         cover: "80-20-sales-and-marketing.png",
       },
@@ -19,7 +17,7 @@ async function main() {
         title:
           "Sales Funnel Sabotage: Are These 10 Common Mistakes Holding Your Business Back? (The Internet Marketing Starter Pack Book 3)",
         description:
-          'Are your sales funnels underperforming? Are you struggling to identify what\'s holding your business back?\n\nUncover the secrets to maximizing your sales funnel effectiveness with "Sales Funnel Sabotage."\n\nThis insightful book shines a spotlight on the pitfalls that could be costing your business BIG, and reveals how you can turn the tables on the common mistakes entrepreneurs often make.',
+          'Are your sales funnels underperforming? Are you struggling to identify what\'s holding your business back? Uncover the secrets to maximizing your sales funnel effectiveness with "Sales Funnel Sabotage". This insightful book shines a spotlight on the pitfalls that could be costing your business BIG, and reveals how you can turn the tables on the common mistakes entrepreneurs often make.',
         published: "July 24, 2023",
         cover: "sales-funnel-sabotage.png",
       },
@@ -38,7 +36,6 @@ async function main() {
       },
       {
         id: "author-3",
-
         name: "Miles Beckler",
       },
     ],
