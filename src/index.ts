@@ -1,16 +1,6 @@
 import { Hono } from "hono";
+import { HTTPException } from "hono/http-exception";
 import { prisma } from "./libs/prisma";
-
-import {
-  type Book,
-  dataBooks,
-  type Author,
-  dataAuthors,
-  type CompleteBook,
-} from "./data/books";
-import { SortByDate } from "./utils/sort-by-date";
-
-// let books = dataBooks;
 
 const app = new Hono();
 
@@ -43,133 +33,102 @@ app.get("/books", async (c) => {
   }
 });
 
-// app.get("/books/:q?", async (c) => {
-//   console.log('c.req.param("q")');
-//   console.log(c.req.param("q"));
-//   try {
-//     const allBooks = await prisma.book.findMany({
-//       where: {
-//         title: {
-//           search: c.req.param("q"),
-//         },
-//       },
-//       orderBy: [{ created_at: "desc" }],
-//     });
+app.get("/books/:id", async (c) => {
+  try {
+    const paramId = c.req.param("id");
 
-//     return c.json(allBooks);
-//   } catch (err: any) {
-//     console.log(err.message);
-//   }
-// });
+    if (!paramId) {
+      c.status(204);
+      return c.json({ message: "Book ID needed" });
+    }
 
-// app.get("/books/:id", (c) => {
-//   const book = books.filter((book) => book.id == c.req.param("id"));
+    const book = await prisma.book.findUnique({
+      where: { id: paramId },
+    });
 
-//   Object.assign(book, { prop: "authors" });
-//   book.authors = [getAuthorDetail(book.author_id)];
+    if (book == null) {
+      c.status(204);
+      return c.json({ message: "Book doesn't exists!" });
+    }
 
-//   return c.json(book);
-// });
+    return c.json(book);
+  } catch (err: any) {
+    console.log(err.message);
+    throw new HTTPException(401, { message: err.message });
+  }
+});
 
-// app.post("/books", async (c) => {
-//   const body = await c.req.json();
-//   const newBook: Book = {
-//     id: randomId(),
-//     title: body.title,
-//     description: body.description,
-//     author_id: body.author_id,
-//     published: body.published,
-//     cover: "",
-//     createdAt: new Date(),
-//     updatedAt: new Date(),
-//   };
-//   const newBooksList = [...books, newBook];
-//   books = newBooksList;
+app.post("/books", async (c) => {
+  const body = await c.req.json();
+  try {
+    const book = await prisma.book.create({
+      data: {
+        title: body.title,
+        description: body.description,
+        published: body.published,
+        cover: body.title + ".png",
+      },
+    });
 
-//   Object.assign(newBook, { prop: "authors" });
-//   newBook.authors = [getAuthorDetail(newBook.author_id)];
+    return c.json(book);
+  } catch (err: any) {
+    console.log(err.message);
+    throw new HTTPException(401, { message: err.message });
+  }
+});
 
-//   return c.json(newBook);
-// });
+app.delete("/books/:id", async (c) => {
+  const paramId = c.req.param("id");
 
-// app.delete("/books/:id", (c) => {
-//   const id = c.req.param("id");
+  try {
+    if (!paramId) {
+      c.status(204);
+      return c.json({ message: "Book ID needed" });
+    }
 
-//   if (!id) {
-//     return c.json({ message: "Books ID needed before delete!" });
-//   }
+    const deletedBook = await prisma.book.deleteMany({
+      where: { id: paramId },
+    });
 
-//   const deletedBook = books.find((book) => book.id === id);
+    if (deletedBook == null) {
+      c.status(204);
+      return c.json({ message: "Book doesn't exists!" });
+    }
 
-//   if (!deletedBook) {
-//     return c.json({ message: `Books with ID: '${id}' not found.` });
-//   }
+    return c.json({
+      message: `Book with ID: '${paramId}' has been deleted!`,
+      deletedBook: deletedBook,
+    });
+  } catch (err: any) {
+    console.log(err.message);
+    throw new HTTPException(401, { message: err.message });
+  }
+});
 
-//   books = books.filter((book) => book.id !== id);
+app.put("/books/:id", async (c) => {
+  const paramId = c.req.param("id");
+  const body = await c.req.json();
 
-//   return c.json({
-//     message: `Book with ID: '${id}' has been deleted!`,
-//     deletedBook: deletedBook,
-//   });
-// });
+  if (!paramId) {
+    return c.json({ message: "Books ID needed before update!" });
+  }
 
-// app.put("/books/:id", async (c) => {
-//   const id = c.req.param("id");
-//   const body = await c.req.json();
+  const updatedBook = await prisma.book.update({
+    where: {
+      id: paramId,
+    },
+    data: {
+      title: body.title,
+      description: body.description,
+      published: body.published,
+      cover: body.cover,
+    },
+  });
 
-//   if (!id) {
-//     return c.json({ message: "Books ID needed before delete!" });
-//   }
-
-//   const updatedBook = books.find((book: Book) => book.id === id);
-
-//   if (!updatedBook) {
-//     return c.json({ message: `Books with ID: '${id}' not found.` });
-//   }
-
-//   const submittedBook: Book = {
-//     id: updatedBook.id,
-//     title: body.title,
-//     description: body.description,
-//     author_id: body.author_id,
-//     published: body.published,
-//     cover: "",
-//     createdAt: updatedBook.createdAt,
-//     updatedAt: new Date(),
-//   };
-
-//   const latestBook = books.map((book: Book) => {
-//     if (book.id === id) {
-//       return submittedBook;
-//     } else {
-//       return book;
-//     }
-//   });
-
-//   books = latestBook;
-
-//   return c.json({
-//     message: `Book with ID: ${id} has been updated!`,
-//     deletedBook: submittedBook,
-//   });
-// });
-
-// app.delete("/books", (c) => {
-//   books = [];
-//   return c.json(books);
-// });
-
-// function randomId() {
-//   return Math.random().toString(36).slice(2, 7);
-// }
-
-// function getAuthorDetail(authorId: string) {
-//   const result = dataAuthors.find((author: Author) => author.id === authorId);
-//   if (!result) {
-//     return [];
-//   }
-
-//   return result;
-// }
+  return c.json({
+    message: `Book with ID: ${paramId} has been updated!`,
+    updatedBook: updatedBook,
+  });
+});
 
 export default app;
