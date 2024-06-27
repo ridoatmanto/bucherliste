@@ -13,19 +13,25 @@ app.get("/", (c) => {
 
 app.get("/books", async (c) => {
   try {
-    const search = c.req.query("q");
+    const searchQuery = c.req.query("q");
 
-    const allBooks = await prisma.book.findMany({
-      where: {},
-      orderBy: [{ created_at: "desc" }],
-    });
+    if (!searchQuery) {
+      const allBooks = await prisma.book.findMany({
+        where: {},
+        orderBy: [{ created_at: "desc" }],
+      });
 
-    if (search == null || search == undefined) {
       return c.json(allBooks);
     }
 
-    const searchBook = await prisma.$queryRawUnsafe(`SELECT * from "Book" WHERE 
-      LOWER(title) LIKE '%${search.toLowerCase()}%'`);
+    const searchBook = await prisma.book.findMany({
+      where: {
+        title: {
+          contains: searchQuery,
+          mode: "insensitive",
+        },
+      },
+    });
 
     return c.json(searchBook);
   } catch (err: any) {
