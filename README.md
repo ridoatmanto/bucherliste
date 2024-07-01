@@ -4,7 +4,7 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 
 ## REST API Specification
 
-- Production: `https://bucherliste.ridoatmanto.com`
+- Production: `https://api.bucherliste.ridoatmanto.com`
 - Local: `http://localhost:3000`
 
 ### Books API
@@ -15,7 +15,6 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 | `/books?q=:search` | `GET`    | Search books      |
 | `/books/:id`       | `GET`    | Get book by id    |
 | `/books`           | `POST`   | Add new book      |
-| `/books`           | `DELETE` | Delete all books  |
 | `/books/:id`       | `DELETE` | Delete book by id |
 | `/books/:id`       | `PUT`    | Update book by id |
 
@@ -27,9 +26,19 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 | `/authors?q=:search` | `GET`    | Search authors      |
 | `/authors/:id`       | `GET`    | Get author by id    |
 | `/authors`           | `POST`   | Add new author      |
-| `/authors`           | `DELETE` | Delete all authors  |
 | `/authors/:id`       | `DELETE` | Delete author by id |
 | `/authors/:id`       | `PUT`    | Update author by id |
+
+### Book Authors API
+
+| Endpoint                  | HTTP     | Description               |
+| ------------------------- | -------- | ------------------------- |
+| `/book_authors`           | `GET`    | Get all book authors      |
+| `/book_authors?q=:search` | `GET`    | Search book authors       |
+| `/book_authors/:id`       | `GET`    | Get book authors by id    |
+| `/book_authors`           | `POST`   | Add new book authors      |
+| `/book_authors/:id`       | `DELETE` | Delete book authors by id |
+| `/book_authors/:id`       | `PUT`    | Update book authors by id |
 
 ## ERD
 
@@ -44,6 +53,8 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 - PostgreSQL
 - Prisma
 - Render
+- Neon.tech
+- Doppler Env
 - CloudFlare
 - VSCode
 
