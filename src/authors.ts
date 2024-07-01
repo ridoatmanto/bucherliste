@@ -32,111 +32,105 @@ app.get("/", async (c) => {
   }
 });
 
-// app.get("/:id", async (c) => {
-//   try {
-//     const paramId = c.req.param("id");
+app.get("/:id", async (c) => {
+  try {
+    const paramId = c.req.param("id");
 
-//     if (!paramId) {
-//       c.status(204);
-//       return c.json({ message: "Book ID needed" });
-//     }
+    if (!paramId) {
+      c.status(204);
+      return c.json({ message: "Author ID needed" });
+    }
 
-//     const book = await prisma.book.findUnique({
-//       where: { id: paramId },
-//     });
+    const author = await prisma.author.findUnique({
+      where: { id: paramId },
+    });
 
-//     if (book == null) {
-//       c.status(204);
-//       return c.json({ message: "Book doesn't exists!" });
-//     }
+    if (author == null) {
+      c.status(204);
+      return c.json({ message: "Author doesn't exists!" });
+    }
 
-//     return c.json(book);
-//   } catch (err: any) {
-//     console.log(err.message);
-//     throw new HTTPException(401, { message: err.message });
-//   }
-// });
+    return c.json(author);
+  } catch (err: any) {
+    console.log(err.message);
+    throw new HTTPException(401, { message: err.message });
+  }
+});
 
-// app.post("/", async (c) => {
-//   const body = await c.req.json();
-//   try {
-//     const book = await prisma.book.create({
-//       data: {
-//         title: body.title,
-//         description: body.description,
-//         published: body.published,
-//         cover: body.title + ".png",
-//       },
-//     });
+app.post("/", async (c) => {
+  const body = await c.req.json();
+  try {
+    const author = await prisma.author.create({
+      data: {
+        name: body.name,
+      },
+    });
 
-//     return c.json(book);
-//   } catch (err: any) {
-//     console.log(err.message);
-//     throw new HTTPException(401, { message: err.message });
-//   }
-// });
+    return c.json(author);
+  } catch (err: any) {
+    console.log(err.message);
+    throw new HTTPException(401, { message: err.message });
+  }
+});
 
-// app.delete("/:id", async (c) => {
-//   const paramId = c.req.param("id");
+app.delete("/:id", async (c) => {
+  const paramId = c.req.param("id");
 
-//   try {
-//     if (!paramId) {
-//       c.status(204);
-//       return c.json({ message: "Book ID needed" });
-//     }
+  try {
+    if (!paramId) {
+      c.status(204);
+      return c.json({ message: "Author ID needed" });
+    }
 
-//     const deletedBook = await prisma.book.deleteMany({
-//       where: { id: paramId },
-//     });
+    const deletedAuthor = await prisma.author.deleteMany({
+      where: { id: paramId },
+    });
 
-//     if (deletedBook == null) {
-//       c.status(204);
-//       return c.json({ message: "Book doesn't exists!" });
-//     }
+    if (deletedAuthor == null) {
+      c.status(204);
+      return c.json({ message: "Book doesn't exists!" });
+    }
 
-//     return c.json({
-//       message: `Book with ID: '${paramId}' has been deleted!`,
-//       deletedBook: deletedBook,
-//     });
-//   } catch (err: any) {
-//     console.log(err.message);
-//     throw new HTTPException(401, { message: err.message });
-//   }
-// });
+    return c.json({
+      message: `Author with ID: '${paramId}' has been deleted!`,
+      deletedBook: deletedAuthor,
+    });
+  } catch (err: any) {
+    console.log(err.message);
+    throw new HTTPException(401, { message: err.message });
+  }
+});
 
-// app.put("/:id", async (c) => {
-//   const paramId = c.req.param("id");
-//   const body = await c.req.json();
+app.put("/:id", async (c) => {
+  const paramId = c.req.param("id");
+  const body = await c.req.json();
 
-//   if (!paramId) {
-//     return c.json({ message: "Books ID param needed before update!" });
-//   }
+  if (!paramId) {
+    return c.json({ message: "Author ID param needed before update!" });
+  }
 
-//   const book = await prisma.book.findUnique({
-//     where: { id: paramId },
-//   });
+  const book = await prisma.author.findUnique({
+    where: { id: paramId },
+  });
 
-//   if (book == null) {
-//     c.status(204);
-//     return c.json({ message: "Book doesn't exists!" });
-//   }
+  if (book == null) {
+    c.status(204);
+    return c.json({ message: "Author doesn't exists!" });
+  }
 
-//   const updatedBook = await prisma.book.update({
-//     where: {
-//       id: paramId,
-//     },
-//     data: {
-//       title: body.title,
-//       description: body.description,
-//       published: body.published,
-//       cover: body.cover,
-//     },
-//   });
+  const updatedAuthor = await prisma.author.update({
+    where: {
+      id: paramId,
+    },
+    data: {
+      name: body.name,
+    },
+  });
 
-//   return c.json({
-//     message: `Book with ID: ${paramId} has been updated!`,
-//     updatedBook: updatedBook,
-//   });
-// });
+  return c.json({
+    message: `Author with ID: ${paramId} has been updated!`,
+    updatedBook: updatedAuthor,
+  });
+});
 
 export const authors = app;
