@@ -80,6 +80,8 @@ Another detail or something to discuss please contact me on Telegram on [t.me/ri
 
 ## JSON output preview:
 
+### Book List
+
 ```json
 [
   {
@@ -99,6 +101,59 @@ Another detail or something to discuss please contact me on Telegram on [t.me/ri
     "cover": "sales-funnel-sabotage.png",
     "created_at": "2024-06-26T09:36:40.681Z",
     "updated_at": "2024-06-26T09:36:40.681Z"
+  }
+]
+```
+
+### Author List
+
+```json
+[
+  {
+    "id": "author-1",
+    "name": "Perry Marshall",
+    "created_at": "2024-06-26T09:36:40.696Z",
+    "updated_at": "2024-06-26T09:36:40.696Z"
+  },
+  {
+    "id": "author-2",
+    "name": "Richard Koch",
+    "created_at": "2024-06-26T09:36:40.696Z",
+    "updated_at": "2024-06-26T09:36:40.696Z"
+  },
+  {
+    "id": "author-3",
+    "name": "Miles Beckler",
+    "created_at": "2024-06-26T09:36:40.696Z",
+    "updated_at": "2024-06-26T09:36:40.696Z"
+  }
+]
+```
+
+### Book Author List
+
+```json
+[
+  {
+    "id": "clxvn5gqk0000b9zblboqkv4u",
+    "book_id": "book-1",
+    "author_id": "author-1",
+    "created_at": "2024-06-26T09:36:40.700Z",
+    "updated_at": "2024-06-26T09:36:40.700Z"
+  },
+  {
+    "id": "clxvn5gqk0001b9zby23969p0",
+    "book_id": "book-1",
+    "author_id": "author-2",
+    "created_at": "2024-06-26T09:36:40.700Z",
+    "updated_at": "2024-06-26T09:36:40.700Z"
+  },
+  {
+    "id": "clxvn5gqk0002b9zbdaid4ipx",
+    "book_id": "book-2",
+    "author_id": "author-3",
+    "created_at": "2024-06-26T09:36:40.700Z",
+    "updated_at": "2024-06-26T09:36:40.700Z"
   }
 ]
 ```
