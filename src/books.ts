@@ -109,7 +109,7 @@ app.put("/:id", async (c) => {
   const body = await c.req.json();
 
   if (!paramId) {
-    return c.json({ message: "Books ID param needed before update!" });
+    return c.json({ message: "Book ID param needed before update!" });
   }
 
   const book = await prisma.book.findUnique({
