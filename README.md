@@ -66,19 +66,29 @@ To install dependencies:
 bun install
 ```
 
-To run:
+To run App:
+
+- Start project `bun dev`. Then open `http://localhost:3000`
+- Create migration from existing schema `bun db:migrate:dev`.
+- Applying migration just created `bun db:migrate:deploy`.
+- Generate prisma client needed with `bun db:generate`.
+- Running migration to init table `bun db:seed`.
+
+## Runing App With Dockerfile
+
+Build image for whole backend API
 
 ```sh
-bun run dev
+docker build -t demo-backend .
 ```
 
-then open `http://localhost:3000`
+Run `docker-compose.yml` with:
 
-## Futhermore Information
+```sh
+docker compose up -d
+```
 
-Another detail or something to discuss please contact me on Telegram on [t.me/ridoatmanto](https://t.me/ridoatmanto).
-
-## JSON output preview:
+## Sample JSON output preview:
 
 ### Book List
 
@@ -158,13 +168,9 @@ Another detail or something to discuss please contact me on Telegram on [t.me/ri
 ]
 ```
 
-## How to run Web App API on local
+## Futhermore Information
 
-- Start project `bun dev`.
-- Create migration from existing schema `bun db:migrate:dev`.
-- Applying migration just created `bun db:migrate:deploy`.
-- Generate prisma client needed with `bun db:generate`.
-- Running migration to init table `bun db:seed`.
+Another detail or something to discuss please contact me on Telegram on [t.me/ridoatmanto](https://t.me/ridoatmanto).
 
 ---
 
