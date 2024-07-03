@@ -158,6 +158,14 @@ Another detail or something to discuss please contact me on Telegram on [t.me/ri
 ]
 ```
 
+## How to run Web App API on local
+
+- Start project `bun dev`.
+- Create migration from existing schema `bun db:migrate:dev`.
+- Applying migration just created `bun db:migrate:deploy`.
+- Generate prisma client needed with `bun db:generate`.
+- Running migration to init table `bun db:seed`.
+
 ---
 
 Created © 2024 by [Rido Atmanto](https://ridoatmanto.com)
