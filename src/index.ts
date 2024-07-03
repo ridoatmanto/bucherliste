@@ -7,7 +7,7 @@ const app = new Hono();
 
 app.get("/", (c) => {
   return c.json({
-    message: "Bucherliste",
+    message: "Bücherliste (Book List)",
     books: "/books",
     authors: "/authors",
     "book-authors": "/book-authors",
