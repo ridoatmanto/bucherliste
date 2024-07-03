@@ -33,12 +33,12 @@ Backend API which showing best seller book recommendations to feed your thirsty 
 
 | Endpoint                  | HTTP     | Description               |
 | ------------------------- | -------- | ------------------------- |
-| `/book_authors`           | `GET`    | Get all book authors      |
-| `/book_authors?q=:search` | `GET`    | Search book authors       |
-| `/book_authors/:id`       | `GET`    | Get book authors by id    |
-| `/book_authors`           | `POST`   | Add new book authors      |
-| `/book_authors/:id`       | `DELETE` | Delete book authors by id |
-| `/book_authors/:id`       | `PUT`    | Update book authors by id |
+| `/book-authors`           | `GET`    | Get all book authors      |
+| `/book-authors?q=:search` | `GET`    | Search book authors       |
+| `/book-authors/:id`       | `GET`    | Get book authors by id    |
+| `/book-authors`           | `POST`   | Add new book authors      |
+| `/book-authors/:id`       | `DELETE` | Delete book authors by id |
+| `/book-authors/:id`       | `PUT`    | Update book authors by id |
 
 ## ERD
 
@@ -100,8 +100,8 @@ docker compose up -d
     "description": "Stop \"Just Getting By\"... Master the 80/20 Rule. Apply the Pareto Principle to Business And Make More Money Without More Work. When you know how to walk into any situation and see the 80/20's, the 80/20 Principle can solve almost ANY conversion problem. Any traffic problem. Any money problem. Perry Marshall has something original and extremely useful to say,because he has thought profoundly about the 80/20 Principle. He has come up with some original insights that are literally priceless. You really can change your business and your life.",
     "published": "Aug 13, 2013",
     "cover": "80-20-sales-and-marketing.png",
-    "created_at": "2024-06-26T09:36:40.681Z",
-    "updated_at": "2024-06-26T09:36:40.681Z"
+    "createdAt": "2024-06-26T09:36:40.681Z",
+    "updatedAt": "2024-06-26T09:36:40.681Z"
   },
   {
     "id": "book-2",
@@ -109,8 +109,8 @@ docker compose up -d
     "description": "Are your sales funnels underperforming? Are you struggling to identify what's holding your business back? Uncover the secrets to maximizing your sales funnel effectiveness with \"Sales Funnel Sabotage\". This insightful book shines a spotlight on the pitfalls that could be costing your business BIG, and reveals how you can turn the tables on the common mistakes entrepreneurs often make.",
     "published": "July 24, 2023",
     "cover": "sales-funnel-sabotage.png",
-    "created_at": "2024-06-26T09:36:40.681Z",
-    "updated_at": "2024-06-26T09:36:40.681Z"
+    "createdAt": "2024-06-26T09:36:40.681Z",
+    "updatedAt": "2024-06-26T09:36:40.681Z"
   }
 ]
 ```
@@ -122,20 +122,20 @@ docker compose up -d
   {
     "id": "author-1",
     "name": "Perry Marshall",
-    "created_at": "2024-06-26T09:36:40.696Z",
-    "updated_at": "2024-06-26T09:36:40.696Z"
+    "createdAt": "2024-06-26T09:36:40.696Z",
+    "updatedAt": "2024-06-26T09:36:40.696Z"
   },
   {
     "id": "author-2",
     "name": "Richard Koch",
-    "created_at": "2024-06-26T09:36:40.696Z",
-    "updated_at": "2024-06-26T09:36:40.696Z"
+    "createdAt": "2024-06-26T09:36:40.696Z",
+    "updatedAt": "2024-06-26T09:36:40.696Z"
   },
   {
     "id": "author-3",
     "name": "Miles Beckler",
-    "created_at": "2024-06-26T09:36:40.696Z",
-    "updated_at": "2024-06-26T09:36:40.696Z"
+    "createdAt": "2024-06-26T09:36:40.696Z",
+    "updatedAt": "2024-06-26T09:36:40.696Z"
   }
 ]
 ```
@@ -146,24 +146,24 @@ docker compose up -d
 [
   {
     "id": "clxvn5gqk0000b9zblboqkv4u",
-    "book_id": "book-1",
-    "author_id": "author-1",
-    "created_at": "2024-06-26T09:36:40.700Z",
-    "updated_at": "2024-06-26T09:36:40.700Z"
+    "bookId": "book-1",
+    "authorId": "author-1",
+    "createdAt": "2024-06-26T09:36:40.700Z",
+    "updatedAt": "2024-06-26T09:36:40.700Z"
   },
   {
     "id": "clxvn5gqk0001b9zby23969p0",
-    "book_id": "book-1",
-    "author_id": "author-2",
-    "created_at": "2024-06-26T09:36:40.700Z",
-    "updated_at": "2024-06-26T09:36:40.700Z"
+    "bookId": "book-1",
+    "authorId": "author-2",
+    "createdAt": "2024-06-26T09:36:40.700Z",
+    "updatedAt": "2024-06-26T09:36:40.700Z"
   },
   {
     "id": "clxvn5gqk0002b9zbdaid4ipx",
-    "book_id": "book-2",
-    "author_id": "author-3",
-    "created_at": "2024-06-26T09:36:40.700Z",
-    "updated_at": "2024-06-26T09:36:40.700Z"
+    "bookId": "book-2",
+    "authorId": "author-3",
+    "createdAt": "2024-06-26T09:36:40.700Z",
+    "updatedAt": "2024-06-26T09:36:40.700Z"
   }
 ]
 ```
